@@ -1,0 +1,8 @@
+{
+  "sepolia": {
+    "SoundSphereCore": {
+      "address": "0x4bf666288c7F3a223e92ccFD687395b4DE0B6fBf",
+      "startBlock": 4865169
+    }
+  }
+}

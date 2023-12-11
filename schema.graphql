@@ -1,0 +1,65 @@
+type CreatingMusicBloc @entity(immutable: true) {
+  id: Bytes!
+  bloc: Bytes! # bytes32
+  creator: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type JoinedMusicBloc @entity(immutable: true) {
+  id: Bytes!
+  bloc: Bytes! # address
+  seedBox: BigInt! # uint256
+  creator: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Merged @entity(immutable: true) {
+  id: Bytes!
+  bloc: Bytes! # address
+  seedId: Bytes! # bytes32
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type NewMusicBloc @entity(immutable: true) {
+  id: Bytes!
+  bloc: Bytes! # address
+  creator: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type NewSeedStarted @entity(immutable: true) {
+  id: Bytes!
+  bloc: Bytes! # address
+  seed: Bytes! # bytes32
+  round: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SeedCompleted @entity(immutable: true) {
+  id: Bytes!
+  musicBloc: Bytes! # address
+  seedId: Bytes! # bytes32
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type StatusPosted @entity(immutable: true) {
+  id: Bytes!
+  bloc: Bytes! # address
+  message: String! # string
+  author: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}

@@ -1,0 +1,42 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: SoundSphereCore
+    network: sepolia
+    source:
+      address: "0x4bf666288c7F3a223e92ccFD687395b4DE0B6fBf"
+      abi: SoundSphereCore
+      startBlock: 4865169
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - CreatingMusicBloc
+        - JoinedMusicBloc
+        - Merged
+        - NewMusicBloc
+        - NewSeedStarted
+        - SeedCompleted
+        - StatusPosted
+      abis:
+        - name: SoundSphereCore
+          file: ./abis/SoundSphereCore.json
+      eventHandlers:
+        - event: CreatingMusicBloc(indexed bytes32,indexed address)
+          handler: handleCreatingMusicBloc
+        - event: JoinedMusicBloc(indexed address,indexed uint256,indexed address)
+          handler: handleJoinedMusicBloc
+        - event: Merged(indexed address,indexed bytes32)
+          handler: handleMerged
+        - event: NewMusicBloc(indexed address,indexed address)
+          handler: handleNewMusicBloc
+        - event: NewSeedStarted(indexed address,indexed bytes32,indexed uint256)
+          handler: handleNewSeedStarted
+        - event: SeedCompleted(indexed address,indexed bytes32)
+          handler: handleSeedCompleted
+        - event: StatusPosted(indexed address,indexed string,indexed address)
+          handler: handleStatusPosted
+      file: ./src/sound-sphere-core.ts
